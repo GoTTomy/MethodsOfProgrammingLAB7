@@ -28,13 +28,13 @@ public class CarController{
         System.out.println("Car " + car + "has been sucesfully added");
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping(value="delete/{id}", produces = "application/json")
     public void deleteCar(@PathVariable Long id){
         repository.delete(repository.findById(id).get());
         System.out.println("Deleted car" + repository.findById(id));
     }
 
-    @PutMapping("update/{id}/{mark}/{registration}")
+    @PutMapping(value = "update/{id}/{mark}/{registration}", produces = "application/json")
     public void updateCar(@PathVariable Long id, @PathVariable String mark, @PathVariable String registration){
         Car car = repository.findById(id).get();
         car.setMake(mark);
