@@ -1,4 +1,4 @@
-package com.example.demo.cars;
+package com.example.demo.cars.JPA;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

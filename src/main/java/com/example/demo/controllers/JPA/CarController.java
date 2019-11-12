@@ -1,7 +1,7 @@
-package com.example.demo.controllers;
+package com.example.demo.controllers.JPA;
 
-import com.example.demo.cars.Car;
-import com.example.demo.cars.CarRepository;
+import com.example.demo.cars.JPA.Car;
+import com.example.demo.cars.JPA.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,11 +35,11 @@ public class CarController{
         System.out.println("Deleted car" + repository.findById(id));
     }
 
-    @PutMapping("update")
-    public void updateCar(@RequestBody Car car,@RequestBody Car car2){
-        Car foundcar =repository.findCarByRegistration(car.getRegistration());
-        repository.delete(foundcar);
-        repository.save(car2);
+    @PutMapping("update/{id}/{mark}/{registration}")
+    public void updateCar(@PathVariable Long id, String mark, String registration){
+        Car car = repository.findById(id).get();
+        car.setMake(mark);
+        car.setRegistration(registration);
     }
 
 
