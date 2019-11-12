@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("chuj")
 public class CarController{
     @Autowired
     CarRepository repository;
@@ -36,11 +35,9 @@ public class CarController{
     }
 
     @PutMapping("update/{id}/{mark}/{registration}")
-    public void updateCar(@PathVariable Long id, String mark, String registration){
+    public void updateCar(@PathVariable Long id, @PathVariable String mark, @PathVariable String registration){
         Car car = repository.findById(id).get();
         car.setMake(mark);
         car.setRegistration(registration);
     }
-
-
 }
