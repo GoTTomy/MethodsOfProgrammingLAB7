@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface CarRepository extends CrudRepository<Car, Long> {
-    public Car findCarByMake(String S);
-    public Car findCarByRegistration(String n);
+    Car findCarByMake(String S);
+    Car findCarByRegistration(String n);
 }
